@@ -1,0 +1,23 @@
+<nz-table [nzData]="dataTable" [nzPaginationPosition]="'both'" [nzFrontPagination]="false" [nzTotal]="paging.count"
+  [nzPageSize]="paging.size" [nzPageIndex]="paging.page" [nzShowSizeChanger]="showSizeChanger"
+  (nzPageSizeChange)="pageSizeChange($event)" (nzPageIndexChange)="pageIndexChange($event)"
+  [nzLoading]="isLoadingTable">
+  <thead>
+    <tr>
+      <th *ngFor="let item of listColumns" [nzSortOrder]="'ascend'" (nzSortOrderChange)="sortChange($event, item)">
+        {{item}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of dataTable">
+      <td *ngFor="let type of listDataType">{{ data[type] }}</td>
+      <td>
+        <a *ngIf="isEdit" class="text-info" (click)="editData(data)">Edit</a>
+        <nz-divider *ngIf="isEdit && isDelete" nzType="vertical"></nz-divider>
+        <a *ngIf="isDelete" class="text-danger" nz-popconfirm nzPopconfirmTitle="Are you sure this account?"
+          nzPopconfirmPlacement="bottom" (nzOnConfirm)="confirmDelete(data)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

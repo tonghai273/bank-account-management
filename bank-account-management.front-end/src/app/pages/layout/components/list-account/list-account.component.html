@@ -1,0 +1,113 @@
+<div>
+    <h2>List Account</h2>
+</div>
+<form nz-form [formGroup]="validateForm" class="ant-advanced-search-form" (ngSubmit)="searchEmployee()">
+    <div nz-row [nzGutter]="30">
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>Account Number</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="placeholder" formControlName="account_number" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>Blance</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="placeholder" type="number" formControlName="balance" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>First name</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="placeholder" formControlName="firstname" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>Last name</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="placeholder" formControlName="lastname" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>Age</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="placeholder" type="number" formControlName="age" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>Gender</nz-form-label>
+                <nz-form-control>
+                    <!--                    <input nz-input placeholder="placeholder" formControlName="gender"/>-->
+                    <nz-select formControlName="gender" style="width: 100%;" nzPlaceHolder="Select a gender">
+                        <nz-option nzLabel="Male" nzValue="M"></nz-option>
+                        <nz-option nzLabel="Female" nzValue="F"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>Address</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="placeholder" formControlName="address" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>Employer</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="placeholder" formControlName="employer" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>Email</nz-form-label>
+                <nz-form-control nzErrorTip="The input is not valid email!">
+                    <input nz-input placeholder="placeholder" formControlName="email" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>City</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="placeholder" formControlName="city" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col>
+            <nz-form-item>
+                <nz-form-label>State</nz-form-label>
+                <nz-form-control>
+                    <input nz-input placeholder="placeholder" formControlName="state" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+    <div nz-row>
+        <div nz-col [nzSpan]="24" class="search-area">
+            <button nz-button [nzType]="'primary'">Search</button>
+            <button nz-button type="button">Clear</button>
+        </div>
+    </div>
+</form>
+
+<app-table-component [isLoadingTable]="isLoadingTable" [listColumns]="listColumns" [paging]="pagingModel"
+    [dataTable]="listEmployees" [listDataType]="listDataType" [showSizeChanger]="true"
+    (pageSizeChangeEvent)="pageSizeChange($event)" (pageIndexChangeEvent)="pageIndexChange($event)"
+    (confirmDeleteEvent)="confirmDelete($event)" [isEdit]="isAdmin" [isDelete]="isAdmin"
+    (editDataEvent)="editEmployee($event)" (sortChangeEvent)="sortData($event)">
+</app-table-component>

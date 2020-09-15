@@ -1,0 +1,25 @@
+<div class="h-100">
+  <div class="row">
+    <div class="col-xl-3 col-md-6 col-sm-12 mx-auto">
+      <form nz-form [formGroup]="validateForm" class="p-5 shadow-lg login-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="The input is not valid E-mail!">
+            <nz-input-group nzPrefixIcon="mail">
+              <input type="text" nz-input formControlName="email" placeholder="example@gmail.com" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <nz-input-group nzPrefixIcon="lock">
+              <input type="password" nz-input formControlName="password" placeholder="Password" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <hr>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log
+          in</button>
+      </form>
+    </div>
+  </div>
+</div>

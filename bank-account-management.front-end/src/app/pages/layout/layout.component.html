@@ -1,0 +1,42 @@
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+        [nzTrigger]="null">
+        <div class="sidebar-logo">
+            <a href="https://rikkeisoft.com" target="_blank">
+                <img src="https://rikkeisoft.com/_nuxt/img/77c4d5f.png" alt="logo">
+                <h1>Rikkei Soft</h1>
+            </a>
+        </div>
+        <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+            <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="list-account">List Account</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter *ngIf="isAdmin">
+                        <a routerLink="add-account">Add Account</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nz-sider>
+    <nz-layout>
+        <nz-header>
+            <div class="app-header">
+                <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+                    <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+                </span>
+                <span class="float-right mr-5">
+                    <i nz-icon nzType="logout" nzTheme="outline" nzTooltipTitle="Click to Logout"
+                        nzTooltipPlacement="topLeft" style="cursor: pointer;" nz-button nz-tooltip class="text-danger"
+                        (click)="logout()"></i>
+                </span>
+            </div>
+        </nz-header>
+        <nz-content>
+            <div class="inner-content">
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+    </nz-layout>
+</nz-layout>
